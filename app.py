@@ -2,8 +2,7 @@ import streamlit as st
 import pickle
 import pandas as pd
 
-df = pd.read_csv("C://Users/anu52/Downloads/archive (1)/creditcard.csv")
-pickle_in = open("C://Users/anu52/Downloads/classifier.pkl",'rb')
+pickle_in = open("classifier.pkl",'rb')
 classifier = pickle.load(pickle_in)
 
 def predict_cc_fraud(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o):
@@ -40,21 +39,6 @@ def main():
         else:
             st.text('This is a Fraud')
     st.success("The Prediction is {}".format(result))
-    st.divider()
-
-    # Original Dataframe
-    st.subheader('Original DataFrame', divider='rainbow')
-    st.dataframe(df)
-    st.divider()
-
-    # Statistical Analysis of Dataframe
-    st.subheader('Statistical Analysis of Dataframe')
-    st.dataframe(df.describe())
-    st.divider()
-
-    # Time-Series Graph (Time vs Amount)
-    st.subheader('Time vs Amount (Money Transaction)',divider='rainbow')
-    st.line_chart(df,x='Time',y='Amount')
     st.divider()
 
 if __name__=='__main__':
